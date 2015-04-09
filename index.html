@@ -1,6 +1,10 @@
 <html ng-app="listaTelefonica">
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
     <title>Lista Telefônica</title>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
+
     <script src="lib/angular/angular.js"></script>
     <script>
       angular.module("listaTelefonica", []); //[] -> Conjuntos de modulos que podem ser importados (componentes...)
@@ -13,7 +17,8 @@
         ];
 
         $scope.adicionarContato = function (contato) {
-          $scope.contatos.push(contato);
+          $scope.contatos.push(angular.copy(contato));
+          delete $scope.contato;
         };
       });
     </script>
