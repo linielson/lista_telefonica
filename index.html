@@ -21,7 +21,7 @@
     </style>
     <script src="lib/angular/angular.js"></script>
     <script>
-      angular.module("listaTelefonica", []); //[] -> Conjuntos de modulos que podem ser importados (componentes...)
+      angular.module("listaTelefonica", []);
       angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($scope) {
           $scope.titulo = "Lista Telefônica";
           $scope.contatos = [
@@ -40,8 +40,6 @@
 
   <body ng-controller="listaTelefonicaCtrl">
     <div class="jumbotron">
-      <!-- <h1>Lista Telefônica</h1> Exemplo 1-->
-      <!-- <h1 ng-bind="titulo"></h1> Exemplo 2 - Bind-->
       <h3>{{titulo}}</h3>
       <table class="table table-striped">
         <tr>
@@ -51,9 +49,6 @@
         <tr ng-repeat="contato in contatos">
           <td>{{contato.nome}}</td>
           <td>{{contato.telefone}}</td>
-          <!-- <td ng-repeat="(key,value) in contato">
-            {{value}}
-          </td> -->
         </tr>
       </table>
 
