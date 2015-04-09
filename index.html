@@ -1,0 +1,38 @@
+<html ng-app="listaTelefonica">
+  <head>
+    <title>Lista Telefônica</title>
+    <script src="lib/angular/angular.js"></script>
+    <script>
+      angular.module("listaTelefonica", []); //[] -> Conjuntos de modulos que podem ser importados (componentes...)
+      angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($scope) {
+        $scope.titulo = "Lista Telefônica";
+        $scope.contatos = [
+          {nome: "João", telefone: "9999-9999"},
+          {nome: "Maria", telefone: "9999-9988"},
+          {nome: "José", telefone: "9999-9977"}
+        ];
+
+        $scope.adicionarContato = function (nome, telefone) {
+          $scope.contatos.push({nome: nome, telefone: telefone});
+        };
+      });
+    </script>
+  </head>
+
+  <body ng-controller="listaTelefonicaCtrl">
+    <!-- <h1>Lista Telefônica</h1> Exemplo 1-->
+    <!-- <h1 ng-bind="titulo"></h1> Exemplo 2 - Bind-->
+    <h1>{{titulo}}</h1>
+    <table>
+      <tr>
+        <th>Nome</th><th>Telefone</th>
+      </tr>
+      <tr ng-repeat="contato in contatos">
+        <td>{{contato.nome}}</td><td>{{contato.telefone}}</td>
+      </tr>
+    </table>
+    <input type="text" ng-model="nome" placeholder="Nome">
+    <input type="text" ng-model="telefone" placeholder="Telefone">
+    <button ng-click="adicionarContato(nome, telefone)">Adicionar contato</button>
+  </body>
+</html>
