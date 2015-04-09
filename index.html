@@ -9,35 +9,41 @@
     <script>
       angular.module("listaTelefonica", []); //[] -> Conjuntos de modulos que podem ser importados (componentes...)
       angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($scope) {
-        $scope.titulo = "Lista Telefônica";
-        $scope.contatos = [
-          {nome: "João", telefone: "9999-9999"},
-          {nome: "Maria", telefone: "9999-9988"},
-          {nome: "José", telefone: "9999-9977"}
-        ];
+          $scope.titulo = "Lista Telefônica";
+          $scope.contatos = [
+              {nome: "João", telefone: "9999-9999"},
+              {nome: "Maria", telefone: "9999-9988"},
+              {nome: "José", telefone: "9999-9977"}
+          ];
 
-        $scope.adicionarContato = function (contato) {
-          $scope.contatos.push(angular.copy(contato));
-          delete $scope.contato;
-        };
+          $scope.adicionarContato = function (contato) {
+              $scope.contatos.push(angular.copy(contato));
+              delete $scope.contato;
+          };
       });
     </script>
   </head>
 
   <body ng-controller="listaTelefonicaCtrl">
-    <!-- <h1>Lista Telefônica</h1> Exemplo 1-->
-    <!-- <h1 ng-bind="titulo"></h1> Exemplo 2 - Bind-->
-    <h1>{{titulo}}</h1>
-    <table>
-      <tr>
-        <th>Nome</th><th>Telefone</th>
-      </tr>
-      <tr ng-repeat="contato in contatos">
-        <td>{{contato.nome}}</td><td>{{contato.telefone}}</td>
-      </tr>
-    </table>
-    <input type="text" ng-model="contato.nome" placeholder="Nome">
-    <input type="text" ng-model="contato.telefone" placeholder="Telefone">
-    <button ng-click="adicionarContato(contato)">Adicionar contato</button>
+    <div class="jumbotron">
+      <!-- <h1>Lista Telefônica</h1> Exemplo 1-->
+      <!-- <h1 ng-bind="titulo"></h1> Exemplo 2 - Bind-->
+      <h3>{{titulo}}</h3>
+      <table class="table table-striped">
+        <tr>
+          <th>Nome</th>
+          <th>Telefone</th>
+        </tr>
+        <tr ng-repeat="contato in contatos">
+          <td>{{contato.nome}}</td>
+          <td>{{contato.telefone}}</td>
+        </tr>
+      </table>
+
+      <input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome"/>
+      <input class="form-control" type="text" ng-model="contato.telefone" placeholder="Telefone"/>
+      <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)">Adicionar Contato</button>
+      {{contato}}
+    </div>
   </body>
 </html>
