@@ -18,7 +18,14 @@
       .form-control {
         margin-bottom: 5px;
       }
+      .selecionado {
+        background-color: yellow;
+      }
+      .negrito {
+        font-weight: bold;
+      }
     </style>
+
     <script src="lib/angular/angular.js"></script>
     <script>
       angular.module("listaTelefonica", []);
@@ -42,6 +49,8 @@
               $scope.contatos.push(angular.copy(contato));
               delete $scope.contato;
           };
+
+          $scope.classe = "selecionado";
       });
     </script>
   </head>
@@ -49,13 +58,14 @@
   <body ng-controller="listaTelefonicaCtrl">
     <div class="jumbotron">
       <h3>{{titulo}}</h3>
-      <table class="table table-striped">
+      <!-- <table class="table table-striped"> -->
+        <table class="table">
         <tr>
           <th>Nome</th>
           <th>Telefone</th>
           <th>Operadora</th>
         </tr>
-        <tr ng-repeat="contato in contatos">
+        <tr ng-class="classe" ng-repeat="contato in contatos">
           <td>{{contato.nome}}</td>
           <td>{{contato.telefone}}</td>
           <td>{{contato.operadora.nome}}</td>
@@ -64,7 +74,7 @@
 
       <input class="form-control" type="text" ng-model="contato.nome" placeholder="Nome"/>
       <input class="form-control" type="text" ng-model="contato.telefone" placeholder="Telefone"/>
-      <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras">
+      <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome for operadora in operadoras">
         <option value="">Selecione uma operadora</option>
       </select>
       <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone">Adicionar Contato</button>
