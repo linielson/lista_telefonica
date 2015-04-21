@@ -29,7 +29,7 @@
     <script src="lib/angular/angular.js"></script>
     <script>
       angular.module("listaTelefonica", []);
-      angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($scope) {
+      angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope) {
           $scope.titulo = "Lista Telefônica";
           $scope.contatos = [
               {nome: "João", telefone: "9999-9999"},
@@ -45,13 +45,25 @@
               {nome: "Embratel", codigo: 21, categoria: "Fixo"}
           ];
 
-          $scope.adicionarContato = function (contato) {
+          $scope.adicionarContato = function(contato) {
               $scope.contatos.push(angular.copy(contato));
               delete $scope.contato;
           };
 
-          // $scope.classe1 = "selecionado";
-          // $scope.classe2 = "negrito";
+          $scope.apagarContatos = function(contatos) {
+            $scope.contatos = contatos.filter(function(contato) {
+              if (!contato.selecionado) {
+                return contato;
+              }
+            });
+          };
+
+          $scope.isContatosSelecionado = function(contatos) {
+            return contatos.some(function(contato) {
+              return contato.selecionado;
+            });
+          };
+
       });
     </script>
   </head>
@@ -60,7 +72,6 @@
     <div class="jumbotron">
       <h3>{{titulo}}</h3>
       {{contatos}}
-      <!-- <table class="table table-striped"> -->
       <table class="table">
         <tr>
           <th></th>
@@ -82,6 +93,7 @@
         <option value="">Selecione uma operadora</option>
       </select>
       <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone">Adicionar Contato</button>
+      <button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-disabled="!isContatosSelecionado(contatos)">Apagar Contato</button>
       {{contato}}
     </div>
   </body>
