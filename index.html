@@ -95,7 +95,7 @@
         <option value="">Selecione uma operadora</option>
       </select>
       <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone">Adicionar Contato</button>
-      <button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-hide="!isContatosSelecionado(contatos)">Apagar Contato</button>
+      <button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-if="!isContatosSelecionado(contatos)">Apagar Contato</button>
 
     </div>
   </body>
