@@ -85,7 +85,14 @@
           <th>Operadora</th>
           <th>Data</th>
         </tr>
-        <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter:{nome: criterioDebusca}">
+        <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter:criterioDebusca | orderBy:'nome'">
+          <!--
+            ASC: orderBy:'nome'
+            ASC: orderBy:'+nome'
+            ASC: orderBy:'nome':false
+            DESC: orderBy:'-nome'
+            DESC: orderBy:'nome':true
+          -->
           <td><input type="checkbox" ng-model="contato.selecionado"/></td>
           <td>{{contato.nome | uppercase}}</td>
           <td>{{contato.telefone}}</td>
