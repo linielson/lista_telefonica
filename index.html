@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
     <style>
       .jumbotron {
-        width: 400px;
+        width: 600px;
         text-align: center;
         margin-top: 20px;
         margin-left: auto;
@@ -33,9 +33,9 @@
       angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function($scope) {
           $scope.titulo = "Lista Telefônica";
           $scope.contatos = [
-              {nome: "João", telefone: "9999-9999", cor: "blue"},
-              {nome: "Maria", telefone: "9999-9988", cor: "green"},
-              {nome: "José", telefone: "9999-9977", cor: "red"}
+              {nome: "João", telefone: "9999-9999", data: new Date(), operadora: {nome: "Oi", codigo: 14, categoria: "Celular"}},
+              {nome: "Maria", telefone: "9999-9988", data: new Date(), operadora: {nome: "Vivo", codigo: 15, categoria: "Celular"}},
+              {nome: "José", telefone: "9999-9977", data: new Date(), operadora: {nome: "Tim", codigo: 41, categoria: "Celular"}}
           ];
 
           $scope.operadoras = [
@@ -80,14 +80,14 @@
           <th>Nome</th>
           <th>Telefone</th>
           <th>Operadora</th>
-          <th></th>
+          <th>Data</th>
         </tr>
         <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos">
           <td><input type="checkbox" ng-model="contato.selecionado"/></td>
-          <td>{{contato.nome}}</td>
+          <td>{{contato.nome | uppercase}}</td>
           <td>{{contato.telefone}}</td>
-          <td>{{contato.operadora.nome}}</td>
-          <td><div style="width: 20px; height: 20px;" ng-style="{'background-color': contato.cor}"></div> </td>
+          <td>{{contato.operadora.nome | lowercase }}</td>
+          <td>{{contato.data | date: 'dd/MM/yyyy HH:mm'}}</td>
         </tr>
       </table>
 
