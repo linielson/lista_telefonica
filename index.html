@@ -99,22 +99,12 @@
         </select>
       </form>
 
-
-        <!-- <div ng-show="contatoForm.nome.$error.required && contatoForm.nome.$dirty" class="alert alert-danger">
-          Por favor, preencha o nome!
+      <div ng-show="contatoForm.nome.$dirty" ng-messages="contatoForm.nome.$error">
+        <div ng-message="required" class="alert alert-danger">
+          Por favor, preencha o campo nome!
         </div>
-
-        <div ng-show="contatoForm.nome.$error.minlength" class="alert alert-danger">
-          O campo nome deve ter no mínimo 10 caracteres!
-        </div> -->
-
-      <div ng-messages="contatoForm.nome.$error" class="alert alert-danger">
-        <div ng-message="required && contatoForm.nome.$dirty">
-          Por favor, preencha o nome!
-        </div>
-
-        <div ng-message="minlength">
-          O campo nome deve ter no mínimo 10 caracteres!
+        <div ng-message="minlength" class="alert alert-danger">
+          O campo nome deve ter no mínimo 10 caracteres.
         </div>
       </div>
 
@@ -125,16 +115,6 @@
       <div ng-show="contatoForm.telefone.$error.pattern" class="alert alert-danger">
         O campo telefone deve ter o formato DDDDD-DDDD!
       </div>
-
-      <!-- <div ng-messages="contatoForm.telefone.$error" class="alert alert-danger">
-        <div ng-message="required && contatoForm.telefone.$dirty">
-          Por favor, preencha o telefone!
-        </div>
-
-        <div ng-message="pattern">
-          O campo telefone deve ter o formato DDDDD-DDDD!
-        </div>
-      </div> -->
 
       <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="contatoForm.$invalid">Adicionar Contato</button>
       <button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-if="isContatosSelecionado(contatos)">Apagar Contato</button>
