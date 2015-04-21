@@ -95,8 +95,8 @@
         <option value="">Selecione uma operadora</option>
       </select>
       <button class="btn btn-primary btn-block" ng-click="adicionarContato(contato)" ng-disabled="!contato.nome || !contato.telefone">Adicionar Contato</button>
-      <button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-if="!isContatosSelecionado(contatos)">Apagar Contato</button>
-
+      <button class="btn btn-danger btn-block" ng-click="apagarContatos(contatos)" ng-if="isContatosSelecionado(contatos)">Apagar Contato</button>
     </div>
+    <div ng-include="'footer.html'"></div> <!-- O nome do arquivo está entre aspas simples para que a diretiva não ache que footer é uma variável do scope -->
   </body>
 </html>
